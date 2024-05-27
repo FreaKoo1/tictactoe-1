@@ -50,7 +50,12 @@ def check_winner():
    global winner
    if winner == checkrow() or winner == check_columb() or winner == check_diagonal():
       return winner
-   
+def check_tie():
+   global freespace
+   if "-" not in board:
+      freespace = False
+      print("The game is tied")
+
 while(winner == None or freespace ):
     printboard(board)
     player_move()
