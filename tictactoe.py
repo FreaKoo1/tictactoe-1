@@ -50,18 +50,35 @@ def check_diagonal():
 def check_winner():
    global winner
    if winner == checkrow() or winner == check_columb() or winner == check_diagonal():
-      winner = checkrow() 
+      winner=checkrow()  
+      winner=check_columb()
+      winner=check_diagonal()
 def check_tie():
    global freespace
    if "-" not in board:
       freespace = False
       print("The game is tied")
 
+def switchPlayer():
+   global player
+   if player == "X":
+      player = "O"
+   else:
+      player = "X"
+import random
+def computer_move():
+   while player == "O":
+     inp = random.randint(0,8)
+     if board[inp] == "-":
+        board[inp] = "O"
+        switchPlayer()
 while True:
-    if winner == None and freespace:
-      printboard(board)
-      player_move()
-      printboard(board)
-      check_winner()
-      check_tie()
+   if winner != None or freespace == False:
+      break
+   printboard(board)
+   player_move()
+   check_winner()
+   check_tie()
+   switchPlayer()
+   computer_move()
       
