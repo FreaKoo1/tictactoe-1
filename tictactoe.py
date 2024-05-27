@@ -56,15 +56,14 @@ def check_winner():
    row = checkrow()
    columb = check_columb()
    diagonal = check_diagonal()
-   print(row)
+
    if row:
       winner = row  
    elif columb:
       winner = columb
    elif diagonal:
       winner = diagonal
-   print(winner)
-    
+  
    
   
 def check_tie():
