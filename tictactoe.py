@@ -14,7 +14,7 @@ def printboard(board):
     print(board[6]," | ",board[7]," | ",board[8])
 
 
-def player_move(board):
+def player_move():
     while True:
       inp = int(input("Please select a number[1-9]: "))
       if inp > 0 and inp < 10 and board[inp -1] == "-":
@@ -23,7 +23,34 @@ def player_move(board):
             
       else:
         print("Invalid movement")
-        
-while(winner == None and freespace ):
+    
+def checkrow():
+ #check horizontel row
+  if board[0] == board[1] == board[2] and board[0] != "-":
+     return board[0]
+  elif board[3] == board[4] == board[5] and board[3] != "-":
+     return board[3]
+  elif board[6] == board[7] == board[8] and board[6] != "-":
+     return board[6]
+def check_columb():
+   #check columnb
+   if board[0] == board[3] == board[6] and board[0] != "-":
+      return board[0]
+   elif board[1] == board[4] == board[7] and board[1] != "-":
+      return board[1]
+   elif board[2] == board[5] == board[8] and board[2] != "-":
+      return board[2]
+def check_diagonal():
+   if board[0] == board[4] == board[8] and board[0] != "-":
+      return board[0]
+   elif board[2] == board[4] == board[6] and board[2] != "-":
+      return board[2]
+
+def check_winner():
+   global winner
+   if winner == checkrow() or winner == check_columb() or winner == check_diagonal():
+      return winner
+   
+while(winner == None or freespace ):
     printboard(board)
-    player_move(board)
+    player_move()
